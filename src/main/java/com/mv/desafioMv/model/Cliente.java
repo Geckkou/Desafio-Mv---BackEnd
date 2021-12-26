@@ -12,7 +12,9 @@ import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 import javax.validation.groups.ConvertGroup;
 import javax.validation.groups.Default;
+import java.util.ArrayList;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 
 @EqualsAndHashCode(onlyExplicitlyIncluded = true)
@@ -37,6 +39,11 @@ public class Cliente {
             inverseJoinColumns = {@JoinColumn(name = "projeto_id")}
     )
     Set<Projetos> projetos = new HashSet<>();
+
+    @Valid
+    @NotNull
+    @OneToMany(cascade = CascadeType.ALL)
+    private List<Enderecos> enderecos = new ArrayList<>();
 
     @NotBlank
     @Size(max = 60)

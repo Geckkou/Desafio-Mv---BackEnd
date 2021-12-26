@@ -28,10 +28,6 @@ public class EnderecosService {
 
     @Transactional
     public Enderecos salvar(Enderecos enderecos) {
-        Cliente cliente = clienteService.buscar(enderecos.getCliente().getId());
-
-        enderecos.setCliente(cliente);
-
         return enderecoRepository.save(enderecos);
     }
 
@@ -45,12 +41,11 @@ public class EnderecosService {
 
     @Transactional
     public Enderecos atualizar(Long enderecoId, Enderecos enderecos) {
-        Cliente cliente = clienteService.buscar(enderecos.getCliente().getId());
         Enderecos enderecoEdit = this.buscar(enderecoId);
 
         Enderecos enderecoNovo = enderecos;
 
-        enderecoNovo.setCliente(cliente);
+
         enderecoNovo.setBairro(enderecoEdit.getBairro());
         enderecoNovo.setCidade(enderecoEdit.getCidade());
         enderecoNovo.setComplemento(enderecoEdit.getComplemento());

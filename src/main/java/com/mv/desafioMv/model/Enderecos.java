@@ -12,6 +12,8 @@ import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 import javax.validation.groups.ConvertGroup;
 import javax.validation.groups.Default;
+import java.util.ArrayList;
+import java.util.List;
 
 @EqualsAndHashCode(onlyExplicitlyIncluded = true)
 @Getter
@@ -27,12 +29,6 @@ public class Enderecos {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id")
     private Long id;
-
-    @Valid
-    @ConvertGroup(from = Default.class, to = ValidationGroups.ClienteId.class)
-    @NotNull
-    @ManyToOne
-    private Cliente cliente;
 
     @NotBlank
     @Size(max = 60)
